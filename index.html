@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLSM Calculator</title>
+</head>
+
+<link rel="stylesheet" href="tree.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="icon" href="logo.png" type="image/png">
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
+
+<body class="bg-light">
+
+    <div id="copiedToast" class="toast fixed-top-toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+        <div class="toast-header">
+            <strong class="mr-auto">Copied</strong>
+        </div>
+        <div class="toast-body" align="center">
+            Your content has been copied to the clipboard.
+        </div>
+    </div>
+
+    <div class="container py-4">
+        <img src="logo.png" alt="">
+        <h1>VLSM Calculator</h1>
+        <i>v0.1 - 04.11.2023</i>
+        <p style="font-size: 11px;">
+            Kenapa pekerjaan ini belum diambil robot
+        </p>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                IP: <input type="text" name="ip"   placeholder="192.168.0.0/24" id="ipInput">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <table class="table" id="ipTable">
+                        <tr>
+                            <th><button class="btn btn-danger remove-button" style="display: none"> - </button>
+                                <button class="btn btn-success add-button"> + </button></th>
+                            <th>Lantai 1</th>
+                            <th><input type="text" placeholder="100"  id="lantai-1" class="lantai-ip"> IP</th>
+                        </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <button onclick="" id="calculateButton" class="btn btn-primary">Calculate</button>
+
+                <button id="refreshButton" class="btn btn-secondary">Reset</button>
+            </div>
+
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <ul class="list-group tree" id="tree">
+                    <li class="list-group-item">
+                        <span ondblclick="toClipBoard(this)">
+                            192.168.0.0/24 <br>
+                            Σ256 <br>
+                            192.168.0.0 - 192.168.0.255
+                        </span>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span ondblclick="toClipBoard(this)">
+                                    192.168.0.0/23 <br>
+                                    Σ128 <br>
+                                    192.168.0.0 - 192.168.0.127
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span ondblclick="toClipBoard(this)">
+                                    192.168.0.0/23 <br>
+                                    Σ128 <br>
+                                    192.168.0.128 - 192.168.0.255
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+</html>

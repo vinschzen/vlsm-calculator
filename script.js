@@ -14,7 +14,7 @@ function calculateIPFirstHalf(subnet) {
     const [ip, mask] = subnet.split('/');
     const ipParts = ip.split('.').map(Number);
     const subnetMask = parseInt(mask, 10);
-    const totalIPs1 = Math.pow(2, 32 - subnetMask) / 2;
+    const totalIPs1 = Math.pow(2, 32 - subnetMask) ;
     const calculatedIP1 = `${ip} - ${incrementIP(ip, totalIPs1 )}`;
     return {
         totalIPs1,
@@ -26,7 +26,7 @@ function calculateIPSecondHalf(subnet) {
     const [ip, mask] = subnet.split('/');
     const ipParts = ip.split('.').map(Number);
     const subnetMask = parseInt(mask, 10);
-    const totalIPs2 = Math.pow(2, 32 - subnetMask) / 2;
+    const totalIPs2 = Math.pow(2, 32 - subnetMask);
     const calculatedIP2 = `${incrementIP(ip, totalIPs2 + 1)} - ${incrementIP(ip, (totalIPs2*2))}`;
     return {
         totalIPs2,
@@ -138,7 +138,7 @@ function pairAndAppend(arrayA, arrayB) {
             const aValue = arrayA[i].value;
             const bElements = document.querySelectorAll('b');
    
-            for (let j = 0; j < bElements.length; j++) {
+            for (let j = bElements.length - 1; j >= 0; j--) {
                 const bValue = bElements[j].innerHTML;
                 const parentElement = bElements[j].parentNode;
                 
